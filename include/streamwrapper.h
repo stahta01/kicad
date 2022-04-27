@@ -28,7 +28,7 @@
 #include <iostream>
 
 
-#if defined( _WIN32 ) && defined( __GNUC__ )
+#if defined( _WIN32 ) && defined( __GNUC__ ) && !defined( __clang__ )
 #include <ext/stdio_filebuf.h>
 
 #define OSTREAM std::ostream
@@ -75,7 +75,7 @@ public:
 } // namespace kicad
 
 
-#elif defined( _MSC_VER ) // defined( _WIN32 ) && defined( __GNUC__ )
+#elif defined( _MSC_VER ) // defined( _WIN32 ) && defined( __GNUC__ ) && !defined( __clang__ )
 
 #define OSTREAM std::ofstream
 
@@ -96,7 +96,7 @@ public:
 
 #define CLOSE_STREAM( var ) var.close()
 
-#else // defined( _WIN32 ) && defined( __GNUC__ )
+#else // defined( _WIN32 ) && defined( __GNUC__ ) && !defined( __clang__ )
 
 #define OSTREAM std::ofstream
 
@@ -114,6 +114,6 @@ public:
 
 #define CLOSE_STREAM( var ) var.close()
 
-#endif // defined( _WIN32 ) && defined( __GNUC__ )
+#endif // defined( _WIN32 ) && defined( __GNUC__ ) && !defined( __clang__ )
 
 #endif  // STREAMWRAPPER_H
