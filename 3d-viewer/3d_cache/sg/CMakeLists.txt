@@ -29,9 +29,9 @@ set( SG_FILES
     ifsg_api.cpp
 )
 
-if( MINGW )
+if( MINGW AND NOT CMAKE_CXX_COMPILER_ID MATCHES "Clang" )
     list( APPEND SG_FILES ${CMAKE_SOURCE_DIR}/common/streamwrapper.cpp )
-endif( MINGW )
+endif()
 
 add_library( kicad_3dsg SHARED ${SG_FILES} )
 
