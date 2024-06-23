@@ -491,7 +491,7 @@ target_link_libraries( common
     pcm_settings
     nanodbc # for now; maybe hoist out of common
     ${Boost_LIBRARIES}
-    ${CURL_LIBRARIES}
+    CURL::libcurl
     ${wxWidgets_LIBRARIES}
     ${EXTRA_LIBS}
     # outline font support
