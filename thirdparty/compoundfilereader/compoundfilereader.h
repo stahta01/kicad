@@ -209,7 +209,7 @@ struct COMPOUND_FILE_HDR
 
 struct COMPOUND_FILE_ENTRY
 {
-    uint16_t name[32];
+    char16_t name[32];
     uint16_t nameLen;
     uint8_t type;
     uint8_t colorFlag;
@@ -261,7 +261,7 @@ struct helper
     }
 };
 
-typedef std::basic_string<uint16_t> utf16string;
+typedef std::basic_string<char16_t> utf16string;
 typedef std::function<int(const COMPOUND_FILE_ENTRY*, const utf16string& dir, int level)>
     EnumFilesCallback;
 

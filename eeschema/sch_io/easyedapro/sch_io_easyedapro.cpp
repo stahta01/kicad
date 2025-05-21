@@ -206,7 +206,7 @@ static LIB_SYMBOL* loadSymbol( nlohmann::json project, const wxString& aLibraryP
             std::vector<nlohmann::json> lines;
             while( zip.CanRead() )
             {
-                nlohmann::json js = nlohmann::json::parse( txt.ReadLine() );
+                nlohmann::json js = nlohmann::json::parse( txt.ReadLine().utf8_string() );
                 lines.emplace_back( js );
             }
 
@@ -258,7 +258,7 @@ void SCH_IO_EASYEDAPRO::EnumerateSymbolLib( wxArrayString&         aSymbolNameLi
             if( !line.Contains( wxS( "ATTR" ) ) )
                 continue; // Don't bother parsing
 
-            nlohmann::json js = nlohmann::json::parse( line );
+            nlohmann::json js = nlohmann::json::parse( line.utf8_string() );
             if( js.at( 0 ) == "ATTR" && js.at( 3 ) == "Symbol" )
             {
                 aSymbolNameList.Add( js.at( 4 ).get<wxString>() );
