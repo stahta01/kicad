@@ -28,6 +28,7 @@
 #include <string>
 #include <sstream>
 
+#include <core/json_serializers.h>
 #include "settings/settings_manager.h"
 #include "settings/kicad_settings.h"
 #include <notifications_manager.h>
@@ -39,7 +40,6 @@
 #include <dialogs/dialog_update_notice.h>
 
 #include <json_common.h>
-#include <core/json_serializers.h>
 
 #include <wx/log.h>
 #include <wx/event.h>

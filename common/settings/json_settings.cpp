@@ -26,6 +26,7 @@
 
 #include <locale_io.h>
 #include <gal/color4d.h>
+#include <core/json_serializers.h>
 #include <settings/json_settings.h>
 #include <settings/json_settings_internals.h>
 #include <settings/nested_settings.h>

@@ -18,6 +18,7 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <core/json_serializers.h>
 #include <wildcards_and_files_ext.h>
 #include <env_vars.h>
 #include <executable_names.h>

@@ -25,6 +25,7 @@
 #define JSON_SERIALIZERS_H_
 
 #include <json_common.h>
+#include <wx/gdicmn.h>
 #include <wx/string.h>
 #include <optional>
 
@@ -89,6 +90,65 @@ struct adl_serializer<std::optional<T>>
         }
     }
 };
+
+// Clang-specific stubs for wxPoint, wxSize, wxRect
+#ifdef __clang__
+template <>
+    struct adl_serializer<wxPoint>
+    {
+        static void to_json(json& j, const wxPoint& p)
+        {
+            j["x"] = p.x;
+            j["y"] = p.y;
+        }
+
+        static void from_json(const json& j, wxPoint& p)
+        {
+            j.at("x").get_to(p.x);
+            j.at("y").get_to(p.y);
+        }
+    };
+
+    template <>
+    struct adl_serializer<wxSize>
+    {
+        static void to_json(json& j, const wxSize& s)
+        {
+            j["width"] = s.GetWidth();
+            j["height"] = s.GetHeight();
+        }
+
+        static void from_json(const json& j, wxSize& s)
+        {
+            int w, h;
+            j.at("width").get_to(w);
+            j.at("height").get_to(h);
+            s = wxSize(w, h);
+        }
+    };
+
+    template <>
+    struct adl_serializer<wxRect>
+    {
+        static void to_json(json& j, const wxRect& r)
+        {
+            j["x"] = r.x;
+            j["y"] = r.y;
+            j["width"] = r.width;
+            j["height"] = r.height;
+        }
+
+        static void from_json(const json& j, wxRect& r)
+        {
+            int x, y, w, h;
+            j.at("x").get_to(x);
+            j.at("y").get_to(y);
+            j.at("width").get_to(w);
+            j.at("height").get_to(h);
+            r = wxRect(x, y, w, h);
+        }
+    };
+#endif // __clang__
 } // namespace nlohmann
 
 

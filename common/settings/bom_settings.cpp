@@ -18,9 +18,9 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <core/json_serializers.h>
 #include <settings/bom_settings.h>
 #include <json_common.h>
-#include <core/json_serializers.h>
 #include <wx/translation.h>
 
 
